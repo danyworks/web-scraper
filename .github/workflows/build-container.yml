@@ -19,7 +19,7 @@ jobs:
           
       - name: Log in to Docker Hub
         run: |
-          docker build -t daniyal439/notybot .
+          docker build -t daniyal439/notybot:v0.1 .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push
+          docker push daniyal439/notybot:v0.1
           
