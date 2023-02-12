@@ -30,12 +30,12 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
             name: notybot
-            path: ${{ github.repository }}/build/bin/myproject.exe
+            path: "build/bin/myproject.exe"
 
       - name: Upload windows installer
         uses: actions/upload-artifact@v3
         with:
           name: notybot-windows-installer
-          path: ${{ github.repository }}/build/bin/myproject-amd64-installer.exe
+          path: "build/bin/myproject-amd64-installer.exe"
 
           
