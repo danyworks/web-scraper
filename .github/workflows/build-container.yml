@@ -19,7 +19,5 @@ jobs:
           
       - name: Log in to Docker Hub
         run: |
-          docker build -t daniyal439/notybot:v0.1 .
-          echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push daniyal439/notybot:v0.1
+          go version
           
