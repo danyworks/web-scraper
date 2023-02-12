@@ -1,0 +1,41 @@
+name: Build and Push
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: 'read'
+
+jobs:
+  push_to_registry:
+    runs-on: ubuntu-latest
+    name: build ${{ github.ref_name }}
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+            node-version: 18.x
+
+      - name: Install Wails
+        run: |
+          go install github.com/wailsapp/wails/v2/cmd/wails@latest
+
+      - name: Upload exe
+        uses: actions/upload-artifact@v3
+        with:
+            name: notybot
+            path: ${{ github.repository }}"/build/bin/myproject.exe"
+
+      - name: Upload windows installer
+        uses: actions/upload-artifact@v3
+        with:
+          name: notybot-windows-installer
+          path: ${{ github.repository }}"/build/bin/myproject-amd64-installer.exe"
+
+          
